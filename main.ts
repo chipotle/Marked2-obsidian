@@ -71,7 +71,7 @@ export default class MarkedPlugin extends Plugin {
 		if (!checking) {
 			const vaultAdapter = this.app.vault.adapter;
 			if (vaultAdapter instanceof FileSystemAdapter) {
-				const fileURL = encodeURI(vaultAdapter.getBasePath());
+				const fileURL = encodeURIComponent(vaultAdapter.getBasePath());
 				exec(`open x-marked://${fileURL}`);
 				new Notice(fileURL);
 			}
@@ -89,7 +89,7 @@ export default class MarkedPlugin extends Plugin {
 			if (activeFile !== undefined) {
 				const vaultAdapter = this.app.vault.adapter;
 				if (vaultAdapter instanceof FileSystemAdapter) {
-					const fileURL = encodeURI(vaultAdapter.getFullPath(activeFile.path));
+					const fileURL = encodeURIComponent(vaultAdapter.getFullPath(activeFile.path));
 					exec(`open 'x-marked://${fileURL}'`);
 				}
 				new Notice("Opened in Marked.");
